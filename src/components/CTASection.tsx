@@ -1,21 +1,61 @@
 import { motion } from "framer-motion";
-import { Download, ArrowRight } from "lucide-react";
+import { Download, ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-28 relative overflow-hidden">
       <div className="absolute inset-0 gradient-primary opacity-95" />
-      <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary-foreground/5 blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-secondary/10 blur-3xl" />
+      
+      {/* Animated decorative elements */}
+      <motion.div
+        className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary-foreground/5 blur-3xl"
+        animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-secondary/10 blur-3xl"
+        animate={{ x: [0, -20, 0], y: [0, 20, 0] }}
+        transition={{ duration: 8, repeat: Infinity }}
+      />
+
+      {/* Grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage: `linear-gradient(hsl(0 0% 100%) 1px, transparent 1px), linear-gradient(90deg, hsl(0 0% 100%) 1px, transparent 1px)`,
+          backgroundSize: "60px 60px",
+        }}
+      />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
           className="text-center space-y-8 max-w-2xl mx-auto"
         >
+          {/* Stars */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="flex justify-center gap-1"
+          >
+            {[...Array(5)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Star className="h-5 w-5 fill-secondary text-secondary" />
+              </motion.div>
+            ))}
+          </motion.div>
+
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary-foreground">
             Prêt à booster vos profits ?
           </h2>
@@ -23,23 +63,34 @@ const CTASection = () => {
             Rejoignez des milliers de vendeurs marocains qui utilisent TASHIL pour optimiser
             leur rentabilité chaque jour.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <Download className="mr-2 h-5 w-5" />
-              Télécharger gratuitement
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8 py-6 rounded-xl"
-            >
-              En savoir plus
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+              >
+                <span className="absolute inset-0 shimmer-btn" />
+                <Download className="mr-2 h-5 w-5 relative z-10" />
+                <span className="relative z-10">Télécharger gratuitement</span>
+              </Button>
+            </motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8 py-6 rounded-xl transition-all duration-300"
+              >
+                En savoir plus
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </motion.div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
