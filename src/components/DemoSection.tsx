@@ -1,22 +1,42 @@
 import { motion } from "framer-motion";
-import { Play } from "lucide-react";
+import { Play, Volume2 } from "lucide-react";
 import { useState } from "react";
 
 const DemoSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="py-24 bg-muted/30" id="demo">
-      <div className="container mx-auto px-4">
+    <section className="py-28 relative overflow-hidden" id="demo">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-muted/30" />
+      <motion.div
+        className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-3xl"
+        animate={{ scale: [1, 1.2, 1] }}
+        transition={{ duration: 10, repeat: Infinity }}
+      />
+      <motion.div
+        className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-secondary/8 blur-3xl"
+        animate={{ scale: [1.2, 1, 1.2] }}
+        transition={{ duration: 12, repeat: Infinity }}
+      />
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 space-y-4"
+          transition={{ duration: 0.7 }}
+          className="text-center mb-14 space-y-5"
         >
-          <span className="inline-block text-sm font-semibold text-secondary uppercase tracking-widest">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest bg-secondary/10 text-secondary-foreground px-4 py-2 rounded-full"
+          >
+            <Volume2 className="h-3.5 w-3.5" />
             Démonstration
-          </span>
+          </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
             Voyez <span className="text-gradient-gold">TASHIL</span> en action
           </h2>
@@ -26,39 +46,71 @@ const DemoSection = () => {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, y: 40, scale: 0.92 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-4xl mx-auto"
         >
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/10 aspect-video bg-foreground/5">
-            {!isPlaying ? (
-              <div
-                className="absolute inset-0 flex items-center justify-center cursor-pointer group"
-                onClick={() => setIsPlaying(true)}
-              >
-                {/* Placeholder thumbnail */}
-                <div className="absolute inset-0 gradient-primary opacity-90" />
-                <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 z-10">
-                  <div className="w-20 h-20 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border-2 border-primary-foreground/40">
-                    <Play className="h-8 w-8 text-primary-foreground ml-1" />
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 aspect-video group">
+            {/* Border glow effect */}
+            <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-secondary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
+            
+            <div className="relative rounded-3xl overflow-hidden bg-foreground/5 z-10 h-full">
+              {!isPlaying ? (
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center cursor-pointer"
+                  onClick={() => setIsPlaying(true)}
+                >
+                  <div className="absolute inset-0 gradient-primary opacity-90" />
+                  
+                  {/* Animated wave pattern */}
+                  <div className="absolute inset-0 overflow-hidden">
+                    {[...Array(3)].map((_, i) => (
+                      <motion.div
+                        key={i}
+                        className="absolute inset-0 border border-primary-foreground/10 rounded-full"
+                        style={{ margin: "auto", width: "200px", height: "200px" }}
+                        animate={{ scale: [1, 2.5, 1], opacity: [0.3, 0, 0.3] }}
+                        transition={{ duration: 3, delay: i * 1, repeat: Infinity }}
+                      />
+                    ))}
                   </div>
-                  <p className="text-primary-foreground font-heading font-semibold text-xl">
-                    Regarder la démo
+
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 z-10">
+                    <motion.div
+                      whileHover={{ scale: 1.15 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="w-20 h-20 rounded-full bg-primary-foreground/20 backdrop-blur-sm flex items-center justify-center border-2 border-primary-foreground/40 animate-pulse-glow"
+                    >
+                      <Play className="h-8 w-8 text-primary-foreground ml-1" />
+                    </motion.div>
+                    <motion.p
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                      className="text-primary-foreground font-heading font-semibold text-xl"
+                    >
+                      Regarder la démo
+                    </motion.p>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="w-full h-full flex items-center justify-center bg-foreground/5"
+                >
+                  <p className="text-muted-foreground font-medium text-center px-8">
+                    🎬 Intégrez ici votre vidéo de démonstration
+                    <br />
+                    <span className="text-sm opacity-70">
+                      Remplacez ce placeholder par un embed YouTube ou une vidéo locale
+                    </span>
                   </p>
-                </div>
-              </div>
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-foreground/5">
-                <p className="text-muted-foreground font-medium text-center px-8">
-                  🎬 Intégrez ici votre vidéo de démonstration
-                  <br />
-                  <span className="text-sm opacity-70">
-                    Remplacez ce placeholder par un embed YouTube ou une vidéo locale
-                  </span>
-                </p>
-              </div>
-            )}
+                </motion.div>
+              )}
+            </div>
           </div>
         </motion.div>
       </div>
