@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { Download, ArrowRight, Star } from "lucide-react";
+import { Download, ArrowRight, Star, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
   return (
     <section className="py-28 relative overflow-hidden">
       <div className="absolute inset-0 gradient-primary opacity-95" />
-      
+
       {/* Animated decorative elements */}
       <motion.div
         className="absolute top-0 right-0 w-96 h-96 rounded-full bg-primary-foreground/5 blur-3xl"
@@ -70,25 +70,29 @@ const CTASection = () => {
             transition={{ delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex flex-col gap-3 w-full sm:w-auto">
               <Button
                 size="lg"
-                className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden"
+                className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden w-full"
               >
                 <span className="absolute inset-0 shimmer-btn" />
                 <Download className="mr-2 h-5 w-5 relative z-10" />
-                <span className="relative z-10">Télécharger gratuitement</span>
+                <span className="relative z-10">Télécharger & Activer</span>
               </Button>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-base px-8 py-6 rounded-xl transition-all duration-300"
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="bg-black/40 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10 shadow-xl flex items-center gap-3 w-full"
               >
-                En savoir plus
-                <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+                <div className="bg-secondary rounded-full p-1.5 shadow-lg">
+                  <Zap className="w-4 h-4 text-secondary-foreground fill-current" />
+                </div>
+                <p className="text-sm font-black text-white uppercase tracking-tight">
+                  Code d'activation : <span className="text-secondary text-base">300 DH</span>
+                </p>
+              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>

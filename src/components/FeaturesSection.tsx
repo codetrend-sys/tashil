@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calculator, RotateCcw, TrendingDown, BarChart3, ArrowUpRight } from "lucide-react";
+import { Calculator, LayoutDashboard, TrendingDown, BarChart3, ArrowUpRight } from "lucide-react";
 
 const features = [
   {
@@ -10,11 +10,11 @@ const features = [
     stat: "3x plus rapide",
   },
   {
-    icon: RotateCcw,
-    title: "Suivi des retours clients",
-    description: "Identifiez les produits avec le plus de retours et optimisez votre catalogue en conséquence.",
+    icon: LayoutDashboard,
+    title: "Tableau de bord intelligent",
+    description: "Une vue d'ensemble complète et intuitive de vos performances e-commerce en un clin d'œil.",
     accent: "gold" as const,
-    stat: "-40% retours",
+    stat: "Visualisation 360°",
   },
   {
     icon: TrendingDown,
@@ -49,7 +49,7 @@ const FeaturesSection = () => {
   return (
     <section className="py-28 bg-background relative overflow-hidden">
       <div className="absolute inset-0 gradient-hero opacity-50" />
-      
+
       {/* Decorative grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.03]"
@@ -85,53 +85,64 @@ const FeaturesSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {features.map((feature, index) => (
             <motion.div
               key={feature.title}
               initial={{ opacity: 0, y: 40, scale: 0.95 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15, duration: 0.6 }}
-              className="group glass-card rounded-2xl p-8 relative overflow-hidden"
+              transition={{ delay: index * 0.1, duration: 0.7, ease: "easeOut" }}
+              whileHover={{ y: -5 }}
+              className="group relative"
             >
-              {/* Hover gradient overlay */}
-              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
-                feature.accent === "primary"
-                  ? "bg-gradient-to-br from-primary/5 to-transparent"
-                  : "bg-gradient-to-br from-secondary/10 to-transparent"
-              }`} />
+              {/* Card Background & Glow */}
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary/30 to-secondary/30 rounded-[2.5rem] blur opacity-0 group-hover:opacity-100 transition duration-1000 group-hover:duration-200" />
 
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-5">
-                  <motion.div
-                    whileHover={{ rotate: 8, scale: 1.1 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    className={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ${
-                      feature.accent === "primary" ? "gradient-primary" : "gradient-gold"
-                    }`}
-                  >
-                    <feature.icon className="h-6 w-6 text-primary-foreground" />
-                  </motion.div>
-                  <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
-                    feature.accent === "primary"
-                      ? "bg-primary/10 text-primary"
-                      : "bg-secondary/20 text-secondary-foreground"
-                  }`}>
-                    {feature.stat}
-                  </span>
+              <div className="relative glass-card h-full rounded-[2rem] p-10 overflow-hidden border border-white/10 dark:border-white/5">
+                {/* Internal hover gradient */}
+                <div className={`absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500 bg-gradient-to-br ${feature.accent === "primary" ? "from-primary" : "from-secondary"
+                  } to-transparent`} />
+
+                <div className="relative z-10 flex flex-col h-full">
+                  <div className="flex items-start justify-between mb-8">
+                    <motion.div
+                      whileHover={{ rotate: 12, scale: 1.15 }}
+                      className={`flex items-center justify-center w-16 h-16 rounded-2xl shadow-lg ${feature.accent === "primary"
+                        ? "bg-primary text-primary-foreground shadow-primary/20"
+                        : "gradient-gold text-white shadow-secondary/20"
+                        }`}
+                    >
+                      <feature.icon className="h-8 w-8" />
+                    </motion.div>
+
+                    <div className="flex flex-col items-end">
+                      <span className={`text-[10px] uppercase tracking-tighter font-bold mb-1 opacity-50`}>
+                        Impact
+                      </span>
+                      <span className={`text-sm font-bold px-4 py-1.5 rounded-full border ${feature.accent === "primary"
+                        ? "border-primary/20 bg-primary/5 text-primary"
+                        : "border-secondary/20 bg-secondary/5 text-secondary-foreground"
+                        }`}>
+                        {feature.stat}
+                      </span>
+                    </div>
+                  </div>
+
+                  <h3 className="text-2xl font-heading font-bold mb-4 tracking-tight group-hover:text-primary transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+
+                  <p className="text-muted-foreground leading-relaxed text-lg mb-8 flex-grow">
+                    {feature.description}
+                  </p>
+
+                  <div className="flex items-center justify-end mt-auto">
+                    {/* Decorative element */}
+                    <div className={`w-8 h-1 rounded-full transition-all duration-500 group-hover:w-16 ${feature.accent === "primary" ? "bg-primary/30" : "bg-secondary/30"
+                      }`} />
+                  </div>
                 </div>
-
-                <h3 className="text-xl font-heading font-bold mb-3 group-hover:text-primary transition-colors duration-300">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed mb-4">{feature.description}</p>
-                
-                <motion.div
-                  className="flex items-center gap-1 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0"
-                >
-                  En savoir plus <ArrowUpRight className="h-4 w-4" />
-                </motion.div>
               </div>
             </motion.div>
           ))}

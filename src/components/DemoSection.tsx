@@ -55,15 +55,15 @@ const DemoSection = () => {
           <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-primary/10 aspect-video group">
             {/* Border glow effect */}
             <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-primary/30 via-transparent to-secondary/30 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0" />
-            
+
             <div className="relative rounded-3xl overflow-hidden bg-foreground/5 z-10 h-full">
               {!isPlaying ? (
                 <motion.div
                   className="absolute inset-0 flex items-center justify-center cursor-pointer"
                   onClick={() => setIsPlaying(true)}
                 >
-                  <div className="absolute inset-0 gradient-primary opacity-90" />
-                  
+                  <div className="absolute inset-0 bg-black/80" />
+
                   {/* Animated wave pattern */}
                   <div className="absolute inset-0 overflow-hidden">
                     {[...Array(3)].map((_, i) => (
@@ -99,15 +99,23 @@ const DemoSection = () => {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="w-full h-full flex items-center justify-center bg-foreground/5"
+                  className="w-full h-full relative bg-black"
                 >
-                  <p className="text-muted-foreground font-medium text-center px-8">
-                    🎬 Intégrez ici votre vidéo de démonstration
-                    <br />
-                    <span className="text-sm opacity-70">
-                      Remplacez ce placeholder par un embed YouTube ou une vidéo locale
-                    </span>
-                  </p>
+                  <video
+                    className="w-full h-full object-contain"
+                    autoPlay
+                    controls
+                    playsInline
+                  >
+                    <source src="/demo-tashil.mp4" type="video/mp4" />
+                    Votre navigateur ne supporte pas la lecture de vidéos.
+                  </video>
+                  <button
+                    onClick={() => setIsPlaying(false)}
+                    className="absolute top-4 right-4 z-20 bg-black/40 hover:bg-black/60 text-white p-2 rounded-full backdrop-blur-md transition-all sm:hidden"
+                  >
+                    <Play className="h-4 w-4 rotate-180" />
+                  </button>
                 </motion.div>
               )}
             </div>

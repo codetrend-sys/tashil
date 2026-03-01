@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
-import { ArrowDown, Download, Sparkles } from "lucide-react";
+import { ArrowDown, Download, Sparkles, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 import logo from "@/assets/logo_YM.png";
@@ -104,7 +104,7 @@ const HeroSection = () => {
               <motion.img
                 src={logo}
                 alt="TASHIL MAROC ECOM"
-                className="w-14 h-14 rounded-xl object-cover"
+                className="w-14 h-14 rounded-xl object-cover mix-blend-multiply contrast-[1.1]"
                 whileHover={{ rotate: 10, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
@@ -161,15 +161,37 @@ const HeroSection = () => {
               transition={{ delay: 0.8, duration: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Button size="lg" className="gradient-primary text-primary-foreground text-base px-8 py-6 rounded-xl shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all duration-300 animate-pulse-glow relative overflow-hidden">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex flex-col gap-3">
+                <Button
+                  size="lg"
+                  className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden w-full"
+                >
                   <span className="absolute inset-0 shimmer-btn" />
                   <Download className="mr-2 h-5 w-5 relative z-10" />
-                  <span className="relative z-10">Télécharger maintenant</span>
+                  <span className="relative z-10">Télécharger & Activer</span>
                 </Button>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  className="bg-black/40 backdrop-blur-xl px-5 py-3 rounded-2xl border border-white/10 shadow-xl flex items-center gap-3 w-full"
+                >
+                  <div className="bg-secondary rounded-full p-1.5 shadow-lg">
+                    <Zap className="w-4 h-4 text-secondary-foreground fill-current" />
+                  </div>
+                  <p className="text-sm font-black text-white uppercase tracking-tight">
+                    Code d'activation : <span className="text-secondary text-base">300 DH</span>
+                  </p>
+                </motion.div>
               </motion.div>
               <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Button size="lg" variant="outline" className="text-base px-8 py-6 rounded-xl border-border hover:bg-muted hover:border-primary/30 transition-all duration-300">
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="text-base px-8 py-6 rounded-xl border-border hover:bg-muted hover:text-black hover:border-primary/30 transition-all duration-300 w-full"
+                  onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
+                >
                   Voir la démo
                   <ArrowDown className="ml-2 h-4 w-4" />
                 </Button>
@@ -212,31 +234,23 @@ const HeroSection = () => {
             className="flex justify-center lg:justify-end perspective-1000"
           >
             <motion.div className="relative" style={{ x: phoneX, y: phoneY }}>
-              {/* Glow ring behind phone */}
-              <motion.div
-                className="absolute -inset-12 rounded-full"
-                style={{
-                  background: "radial-gradient(circle, hsl(187 78% 42% / 0.12) 0%, transparent 70%)",
-                }}
-                animate={{ scale: [1, 1.1, 1], opacity: [0.5, 0.8, 0.5] }}
-                transition={{ duration: 4, repeat: Infinity }}
-              />
-              {/* Orbiting dot */}
-              <motion.div
-                className="absolute w-3 h-3 rounded-full gradient-gold shadow-lg"
-                style={{ top: "10%", left: "0%" }}
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              />
+              {/* Enhanced Glow Effects */}
+              <div className="absolute -inset-20 bg-primary/20 rounded-full blur-[100px] opacity-40 animate-pulse" />
+              <div className="absolute -inset-10 bg-secondary/10 rounded-full blur-[60px] opacity-30 animate-pulse-glow" />
+
+              {/* Floating orbit ring */}
+              <div className="absolute inset-x-[-15%] inset-y-[-5%] border border-white/5 rounded-[3rem] rotate-12 pointer-events-none" />
+
               <motion.img
                 src={phoneMockup}
                 alt="TASHIL MAROC ECOM Dashboard"
-                className="relative w-80 lg:w-96 drop-shadow-2xl"
-                animate={{ y: [-8, 8, -8], rotate: [-1, 1, -1] }}
+                className="relative w-80 lg:w-[420px] rounded-3xl drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] z-10 mix-blend-multiply contrast-[1.1]"
+                animate={{ y: [-10, 10, -10], rotate: [-1.5, 1.5, -1.5] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
+
+              {/* Reflection effect overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-[3rem] pointer-events-none z-20 mix-blend-overlay" />
             </motion.div>
           </motion.div>
         </div>

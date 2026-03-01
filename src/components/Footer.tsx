@@ -9,9 +9,22 @@ const Footer = () => {
             <img src={logo} alt="TASHIL MAROC ECOM" className="w-10 h-10 rounded-lg object-cover" />
             <span className="font-heading font-bold text-sm tracking-tight">TASHIL MAROC ECOM</span>
           </div>
-          <p className="text-sm text-muted-foreground">
-            © 2026 TASHIL MAROC ECOM. Tous droits réservés.
-          </p>
+          <div className="flex flex-col items-center md:items-end gap-1">
+            <p className="text-sm text-muted-foreground">
+              © 2026 TASHIL MAROC ECOM. Tous droits réservés.
+            </p>
+            <p className="text-xs text-muted-foreground/80">
+              Développé par{" "}
+              <a
+                href="https://thecodetrend.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors font-medium underline underline-offset-4"
+              >
+                Code Trend Agency
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
