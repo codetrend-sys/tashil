@@ -1,51 +1,41 @@
 import { motion } from "framer-motion";
-import { Calculator, LayoutDashboard, TrendingDown, BarChart3, ArrowUpRight } from "lucide-react";
-
-const features = [
-  {
-    icon: Calculator,
-    title: "Calcul automatique du bénéfice",
-    description: "Revenus – publicité – coût produit – livraison = votre profit net, calculé instantanément.",
-    accent: "primary" as const,
-    stat: "3x plus rapide",
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Tableau de bord intelligent",
-    description: "Une vue d'ensemble complète et intuitive de vos performances e-commerce en un clin d'œil.",
-    accent: "gold" as const,
-    stat: "Visualisation 360°",
-  },
-  {
-    icon: TrendingDown,
-    title: "Analyse des pertes",
-    description: "Détectez où vous perdez de l'argent : publicité inefficace, livraison coûteuse, retours excessifs.",
-    accent: "primary" as const,
-    stat: "Détection en temps réel",
-  },
-  {
-    icon: BarChart3,
-    title: "Rapports journaliers",
-    description: "Consultez des rapports détaillés chaque jour pour piloter votre business avec précision.",
-    accent: "gold" as const,
-    stat: "Données en direct",
-  },
-];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40, scale: 0.95 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    scale: 1,
-    transition: {
-      delay: i * 0.15,
-      duration: 0.6,
-    },
-  }),
-} as const;
+import { Calculator, LayoutDashboard, TrendingDown, BarChart3 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const FeaturesSection = () => {
+  const { t } = useTranslation();
+
+  const features = [
+    {
+      icon: Calculator,
+      title: t('features.feature1_title'),
+      description: t('features.feature1_desc'),
+      accent: "primary" as const,
+      stat: t('features.feature1_stat'),
+    },
+    {
+      icon: LayoutDashboard,
+      title: t('features.feature2_title'),
+      description: t('features.feature2_desc'),
+      accent: "gold" as const,
+      stat: t('features.feature2_stat'),
+    },
+    {
+      icon: TrendingDown,
+      title: t('features.feature3_title'),
+      description: t('features.feature3_desc'),
+      accent: "primary" as const,
+      stat: t('features.feature3_stat'),
+    },
+    {
+      icon: BarChart3,
+      title: t('features.feature4_title'),
+      description: t('features.feature4_desc'),
+      accent: "gold" as const,
+      stat: t('features.feature4_stat'),
+    },
+  ];
+
   return (
     <section className="py-28 bg-background relative overflow-hidden">
       <div className="absolute inset-0 gradient-hero opacity-50" />
@@ -74,14 +64,14 @@ const FeaturesSection = () => {
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary uppercase tracking-widest bg-primary/5 px-4 py-2 rounded-full"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Fonctionnalités
+            {t('features.badge')}
           </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
-            Tout ce qu'il vous faut pour{" "}
-            <span className="text-gradient">maximiser vos profits</span>
+            {t('features.title_part1')}{" "}
+            <span className="text-gradient">{t('features.title_highlight')}</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Des outils puissants conçus spécifiquement pour les vendeurs e-commerce au Maroc.
+            {t('features.description')}
           </p>
         </motion.div>
 
@@ -118,7 +108,7 @@ const FeaturesSection = () => {
 
                     <div className="flex flex-col items-end">
                       <span className={`text-[10px] uppercase tracking-tighter font-bold mb-1 opacity-50`}>
-                        Impact
+                        {t('features.impact_label')}
                       </span>
                       <span className={`text-sm font-bold px-4 py-1.5 rounded-full border ${feature.accent === "primary"
                         ? "border-primary/20 bg-primary/5 text-primary"

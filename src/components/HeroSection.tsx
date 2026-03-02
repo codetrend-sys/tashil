@@ -2,8 +2,8 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowDown, Download, Sparkles, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
-import logo from "@/assets/logo_YM.png";
 import phoneMockup from "@/assets/phone-mockup.png";
+import { useTranslation } from "react-i18next";
 
 const CountUp = ({ end, suffix = "", duration = 2 }: { end: number; suffix?: string; duration?: number }) => {
   const [count, setCount] = useState(0);
@@ -49,6 +49,7 @@ const FloatingParticle = ({ delay, x, y }: { delay: number; x: number; y: number
 );
 
 const HeroSection = () => {
+  const { t } = useTranslation();
   const apkUrl = "https://tashil.rakopssolutions.com/TASHIL-MAROC-ECOM.apk";
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -103,13 +104,13 @@ const HeroSection = () => {
               className="flex items-center gap-3"
             >
               <motion.img
-                src={logo}
+                src="demo-poster.png"
                 alt="TASHIL MAROC ECOM"
-                className="w-14 h-14 rounded-xl object-cover mix-blend-multiply contrast-[1.1]"
+                className="w-14 h-14 rounded-xl object-cover mt-6 mix-blend-multiply contrast-[1.1]"
                 whileHover={{ rotate: 10, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
-              <span className="font-heading font-bold text-lg tracking-tight">TASHIL MAROC ECOM</span>
+              <span className="font-heading font-bold text-lg tracking-tight mt-6">TASHIL MAROC ECOM</span>
             </motion.div>
 
             <div className="space-y-5">
@@ -125,7 +126,7 @@ const HeroSection = () => {
                   transition={{ duration: 2, repeat: Infinity }}
                 />
                 <Sparkles className="h-3.5 w-3.5" />
-                L'outil #1 des e-commerçants marocains
+                {t('hero.badge')}
               </motion.div>
 
               <motion.h1
@@ -134,15 +135,15 @@ const HeroSection = () => {
                 transition={{ delay: 0.4, duration: 0.7 }}
                 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight"
               >
-                Connaissez votre{" "}
+                {t('hero.title_part1')}{" "}
                 <motion.span
                   className="text-gradient inline-block"
                   animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
                   transition={{ duration: 5, repeat: Infinity }}
                 >
-                  bénéfice net
+                  {t('hero.title_highlight')}
                 </motion.span>{" "}
-                en temps réel
+                {t('hero.title_part2')}
               </motion.h1>
 
               <motion.p
@@ -151,8 +152,7 @@ const HeroSection = () => {
                 transition={{ delay: 0.6, duration: 0.6 }}
                 className="text-lg text-muted-foreground max-w-lg leading-relaxed"
               >
-                Calculez automatiquement vos profits, suivez vos retours, analysez vos pertes
-                et prenez des décisions éclairées — le tout depuis votre smartphone.
+                {t('hero.description')}
               </motion.p>
             </div>
 
@@ -166,11 +166,23 @@ const HeroSection = () => {
                 <Button
                   size="lg"
                   className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden w-full"
-                  onClick={() => { const w = window.open(apkUrl, '_blank'); if (w) w.opener = null; }}
+                  onClick={() => {
+                    const waNumber = '212674901873';
+                    const text = encodeURIComponent(t('hero.whatsapp_msg'));
+                    const waUrl = `https://api.whatsapp.com/send?phone=${waNumber}&text=${text}`;
+                    const waWindow = window.open(waUrl, '_blank');
+                    if (waWindow) waWindow.opener = null;
+                    const a = document.createElement('a');
+                    a.href = apkUrl;
+                    a.setAttribute('download', 'TASHIL-MAROC-ECOM.apk');
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
+                  }}
                 >
                   <span className="absolute inset-0 shimmer-btn" />
                   <Download className="mr-2 h-5 w-5 relative z-10" />
-                  <span className="relative z-10">Télécharger & Activer</span>
+                  <span className="relative z-10">{t('hero.cta_button')}</span>
                 </Button>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
@@ -183,7 +195,7 @@ const HeroSection = () => {
                     <Zap className="w-4 h-4 text-secondary-foreground fill-current" />
                   </div>
                   <p className="text-sm font-black text-white uppercase tracking-tight">
-                    Code d'activation : <span className="text-secondary text-base">300 DH</span>
+                    {t('hero.activation_code')} <span className="text-secondary text-base">{t('hero.price')}</span>
                   </p>
                 </motion.div>
               </motion.div>
@@ -194,7 +206,7 @@ const HeroSection = () => {
                   className="text-base px-8 py-6 rounded-xl border-border hover:bg-muted hover:text-black hover:border-primary/30 transition-all duration-300 w-full"
                   onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
                 >
-                  Voir la démo
+                  {t('hero.demo_button')}
                   <ArrowDown className="ml-2 h-4 w-4" />
                 </Button>
               </motion.div>
@@ -207,8 +219,8 @@ const HeroSection = () => {
               className="flex items-center gap-8 pt-4"
             >
               {[
-                { value: 2500, suffix: "+", label: "Vendeurs actifs", gradient: "text-gradient" },
-                { value: 98, suffix: "%", label: "Satisfaction", gradient: "text-gradient-gold" },
+                { value: 2500, suffix: "+", label: t('hero.stat_venders'), gradient: "text-gradient" },
+                { value: 98, suffix: "%", label: t('hero.stat_satisfaction'), gradient: "text-gradient-gold" },
               ].map((stat, i) => (
                 <div key={stat.label} className="flex items-center gap-8">
                   {i > 0 && <div className="w-px h-10 bg-border" />}
@@ -223,7 +235,7 @@ const HeroSection = () => {
               <div className="w-px h-10 bg-border" />
               <div>
                 <p className="text-2xl font-heading font-bold text-gradient">24/7</p>
-                <p className="text-sm text-muted-foreground">Accès mobile</p>
+                <p className="text-sm text-muted-foreground">{t('hero.stat_access')}</p>
               </div>
             </motion.div>
           </div>

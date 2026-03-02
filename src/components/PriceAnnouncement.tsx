@@ -1,7 +1,10 @@
 import { motion } from "framer-motion";
 import { Sparkles, CheckCircle2, Zap } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const PriceAnnouncement = () => {
+    const { t } = useTranslation();
+
     return (
         <section className="py-20 relative overflow-hidden bg-background">
             <div className="container mx-auto px-4">
@@ -33,20 +36,20 @@ const PriceAnnouncement = () => {
                                     className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 border border-secondary/20 text-secondary-foreground text-xs font-bold uppercase tracking-wider"
                                 >
                                     <Sparkles className="w-3 h-3" />
-                                    Offre de lancement
+                                    {t('pricing.badge')}
                                 </motion.div>
 
                                 <h2 className="text-3xl md:text-4xl font-heading font-bold leading-tight">
-                                    Accès à vie avec <br />
-                                    <span className="text-gradient-gold">Code d'Activation</span>
+                                    {t('pricing.title_part1')} <br />
+                                    <span className="text-gradient-gold">{t('pricing.title_highlight')}</span>
                                 </h2>
 
                                 <ul className="space-y-3">
                                     {[
-                                        "Calcul de profit illimité",
-                                        "Analyses en temps réel",
-                                        "Zéro frais mensuels",
-                                        "Support prioritaire 24/7"
+                                        t('pricing.item1'),
+                                        t('pricing.item2'),
+                                        t('pricing.item3'),
+                                        t('pricing.item4')
                                     ].map((item, i) => (
                                         <motion.li
                                             key={i}
@@ -71,7 +74,7 @@ const PriceAnnouncement = () => {
                                 />
 
                                 <p className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-2 relative z-10">
-                                    Prix Unique
+                                    {t('pricing.price_label')}
                                 </p>
 
                                 <div className="flex items-baseline gap-1 relative z-10">
@@ -80,7 +83,7 @@ const PriceAnnouncement = () => {
                                 </div>
 
                                 <p className="text-xs text-muted-foreground mt-4 text-center font-medium opacity-70 relative z-10">
-                                    Pas d'abonnement. Payez une seule fois, <br /> utilisez pour toujours.
+                                    {t('pricing.footer')}
                                 </p>
 
                                 <motion.div

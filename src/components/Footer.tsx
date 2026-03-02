@@ -1,6 +1,8 @@
 import logo from "@/assets/logo_YM.png";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="py-12 bg-foreground/[0.03] border-t border-border">
       <div className="container mx-auto px-4">
@@ -11,10 +13,10 @@ const Footer = () => {
           </div>
           <div className="flex flex-col items-center md:items-end gap-1">
             <p className="text-sm text-muted-foreground">
-              © 2026 TASHIL MAROC ECOM. Tous droits réservés.
+              {t('footer.rights')}
             </p>
             <p className="text-xs text-muted-foreground/80">
-              Développé par{" "}
+              {t('footer.developed_by')}{" "}
               <a
                 href="https://thecodetrend.com/"
                 target="_blank"

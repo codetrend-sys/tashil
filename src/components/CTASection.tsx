@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
-import { Download, ArrowRight, Star, Zap } from "lucide-react";
+import { Download, Star, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const CTASection = () => {
+  const { t } = useTranslation();
   const apkUrl = "https://tashil.rakopssolutions.com/TASHIL-MAROC-ECOM.apk";
   return (
     <section className="py-28 relative overflow-hidden">
@@ -58,11 +60,10 @@ const CTASection = () => {
           </motion.div>
 
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-primary-foreground">
-            Prêt à booster vos profits ?
+            {t('cta.title')}
           </h2>
           <p className="text-primary-foreground/80 text-lg leading-relaxed">
-            Rejoignez des milliers de vendeurs marocains qui utilisent TASHIL pour optimiser
-            leur rentabilité chaque jour.
+            {t('cta.description')}
           </p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -75,11 +76,23 @@ const CTASection = () => {
               <Button
                 size="lg"
                 className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden w-full"
-                onClick={() => { const w = window.open(apkUrl, '_blank'); if (w) w.opener = null; }}
+                onClick={() => {
+                  const waNumber = '212674901873';
+                  const text = encodeURIComponent(t('hero.whatsapp_msg'));
+                  const waUrl = `https://api.whatsapp.com/send?phone=${waNumber}&text=${text}`;
+                  const waWindow = window.open(waUrl, '_blank');
+                  if (waWindow) waWindow.opener = null;
+                  const a = document.createElement('a');
+                  a.href = apkUrl;
+                  a.setAttribute('download', 'TASHIL-MAROC-ECOM.apk');
+                  document.body.appendChild(a);
+                  a.click();
+                  a.remove();
+                }}
               >
                 <span className="absolute inset-0 shimmer-btn" />
                 <Download className="mr-2 h-5 w-5 relative z-10" />
-                <span className="relative z-10">Télécharger & Activer</span>
+                <span className="relative z-10">{t('hero.cta_button')}</span>
               </Button>
               <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -92,7 +105,7 @@ const CTASection = () => {
                   <Zap className="w-4 h-4 text-secondary-foreground fill-current" />
                 </div>
                 <p className="text-sm font-black text-white uppercase tracking-tight">
-                  Code d'activation : <span className="text-secondary text-base">300 DH</span>
+                  {t('hero.activation_code')} <span className="text-secondary text-base">{t('hero.price')}</span>
                 </p>
               </motion.div>
             </motion.div>

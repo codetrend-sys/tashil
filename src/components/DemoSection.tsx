@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
 import { Play, Volume2 } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const DemoSection = () => {
+  const { t } = useTranslation();
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
@@ -35,13 +37,13 @@ const DemoSection = () => {
             className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-widest bg-secondary/10 text-secondary-foreground px-4 py-2 rounded-full"
           >
             <Volume2 className="h-3.5 w-3.5" />
-            Démonstration
+            {t('demo.badge')}
           </motion.span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold">
-            Voyez <span className="text-gradient-gold">TASHIL</span> en action
+            {t('demo.title_part1')} <span className="text-gradient-gold">{t('demo.title_highlight')}</span> {t('demo.title_part2')}
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-            Découvrez comment notre application simplifie la gestion de votre e-commerce au quotidien.
+            {t('demo.description')}
           </p>
         </motion.div>
 
@@ -92,7 +94,7 @@ const DemoSection = () => {
                       transition={{ delay: 0.5 }}
                       className="text-primary-foreground font-heading font-semibold text-xl"
                     >
-                      Regarder la démo
+                      {t('demo.button')}
                     </motion.p>
                   </div>
                 </motion.div>
@@ -109,7 +111,7 @@ const DemoSection = () => {
                     playsInline
                   >
                     <source src="/demo-tashil.mp4" type="video/mp4" />
-                    Votre navigateur ne supporte pas la lecture de vidéos.
+                    {t('demo.video_fallback')}
                   </video>
                   <button
                     onClick={() => setIsPlaying(false)}

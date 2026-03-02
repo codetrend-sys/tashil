@@ -1,0 +1,68 @@
+{
+    "hero": {
+        "badge": "L'outil #1 des e-commerçants marocains",
+        "title_part1": "Connaissez votre",
+        "title_highlight": "bénéfice net",
+        "title_part2": "en temps réel",
+        "description": "Calculez automatiquement vos profits, suivez vos retours, analysez vos pertes et prenez des décisions éclairées — le tout depuis votre smartphone.",
+        "cta_button": "Télécharger & Activer",
+        "activation_code": "Code d'activation :",
+        "price": "300 DH",
+        "demo_button": "Voir la démo",
+        "stat_venders": "Vendeurs actifs",
+        "stat_satisfaction": "Satisfaction",
+        "stat_access": "Accès mobile",
+        "whatsapp_msg": "Bonjour, je souhaite recevoir le code d'activation pour TASHIL MAROC ECOM."
+    },
+    "features": {
+        "badge": "Fonctionnalités",
+        "title_part1": "Tout ce qu'il vous faut pour",
+        "title_highlight": "maximiser vos profits",
+        "description": "Des outils puissants conçus spécifiquement pour les vendeurs e-commerce au Maroc.",
+        "impact_label": "Impact",
+        "feature1_title": "Calcul automatique du bénéfice",
+        "feature1_desc": "Revenus – publicité – coût produit – livraison = votre profit net, calculé instantanément.",
+        "feature1_stat": "3x plus rapide",
+        "feature2_title": "Tableau de bord intelligent",
+        "feature2_desc": "Une vue d'ensemble complète et intuitive de vos performances e-commerce en un clin d'œil.",
+        "feature2_stat": "Visualisation 360°",
+        "feature3_title": "Analyse des pertes",
+        "feature3_desc": "Détectez où vous perdez de l'argent : publicité inefficace, livraison coûteuse, retours excessifs.",
+        "feature3_stat": "Détection en temps réel",
+        "feature4_title": "Rapports journaliers",
+        "feature4_desc": "Consultez des rapports détaillés chaque jour pour piloter votre business avec précision.",
+        "feature4_stat": "Données en direct"
+    },
+    "pricing": {
+        "badge": "Offre de lancement",
+        "title_part1": "Accès à vie avec",
+        "title_highlight": "Code d'Activation",
+        "item1": "Calcul de profit illimité",
+        "item2": "Analyses en temps réel",
+        "item3": "Zéro frais mensuels",
+        "item4": "Support prioritaire 24/7",
+        "price_label": "Prix Unique",
+        "footer": "Pas d'abonnement. Payez une seule fois, utilisez pour toujours."
+    },
+    "demo": {
+        "badge": "Démonstration",
+        "title_part1": "Voyez",
+        "title_highlight": "TASHIL",
+        "title_part2": "en action",
+        "description": "Découvrez comment notre application simplifie la gestion de votre e-commerce au quotidien.",
+        "button": "Regarder la démo",
+        "video_fallback": "Votre navigateur ne supporte pas la lecture de vidéos."
+    },
+    "cta": {
+        "title": "Prêt à booster vos profits ?",
+        "description": "Rejoignez des milliers de vendeurs marocains qui utilisent TASHIL pour optimiser leur rentabilité chaque jour."
+    },
+    "footer": {
+        "rights": "© 2026 TASHIL MAROC ECOM. Tous droits réservés.",
+        "developed_by": "Développé par"
+    },
+    "common": {
+        "lang_fr": "Français",
+        "lang_ar": "العربية"
+    }
+}
