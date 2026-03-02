@@ -103,7 +103,7 @@ const DemoSection = () => {
                   className="w-full h-full relative bg-black"
                 >
                   <video
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-contain object-center"
                     autoPlay
                     controls
                     playsInline
