@@ -62,7 +62,8 @@ const DemoSection = () => {
                   className="absolute inset-0 flex items-center justify-center cursor-pointer"
                   onClick={() => setIsPlaying(true)}
                 >
-                  <div className="absolute inset-0 bg-black/80" />
+                  <img src="/demo-poster.png" alt="Aperçu de la démo" className="absolute inset-0 w-full h-full min-w-full min-h-full object-fit object-center z-0" />
+                  <div className="absolute inset-0 bg-black/60 z-10" />
 
                   {/* Animated wave pattern */}
                   <div className="absolute inset-0 overflow-hidden">
@@ -77,7 +78,7 @@ const DemoSection = () => {
                     ))}
                   </div>
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 z-10">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 z-20">
                     <motion.div
                       whileHover={{ scale: 1.15 }}
                       whileTap={{ scale: 0.95 }}
@@ -102,7 +103,7 @@ const DemoSection = () => {
                   className="w-full h-full relative bg-black"
                 >
                   <video
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-cover object-center"
                     autoPlay
                     controls
                     playsInline

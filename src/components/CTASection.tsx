@@ -3,6 +3,7 @@ import { Download, ArrowRight, Star, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CTASection = () => {
+  const apkUrl = "https://tashil.rakopssolutions.com/TASHIL-MAROC-ECOM.apk";
   return (
     <section className="py-28 relative overflow-hidden">
       <div className="absolute inset-0 gradient-primary opacity-95" />
@@ -74,6 +75,7 @@ const CTASection = () => {
               <Button
                 size="lg"
                 className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden w-full"
+                onClick={() => { const w = window.open(apkUrl, '_blank'); if (w) w.opener = null; }}
               >
                 <span className="absolute inset-0 shimmer-btn" />
                 <Download className="mr-2 h-5 w-5 relative z-10" />

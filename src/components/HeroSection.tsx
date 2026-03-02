@@ -49,6 +49,7 @@ const FloatingParticle = ({ delay, x, y }: { delay: number; x: number; y: number
 );
 
 const HeroSection = () => {
+  const apkUrl = "https://tashil.rakopssolutions.com/TASHIL-MAROC-ECOM.apk";
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
@@ -165,6 +166,7 @@ const HeroSection = () => {
                 <Button
                   size="lg"
                   className="gradient-gold text-secondary-foreground font-semibold text-base px-8 py-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden w-full"
+                  onClick={() => { const w = window.open(apkUrl, '_blank'); if (w) w.opener = null; }}
                 >
                   <span className="absolute inset-0 shimmer-btn" />
                   <Download className="mr-2 h-5 w-5 relative z-10" />
