@@ -93,24 +93,24 @@ const HeroSection = () => {
         { delay: 1.5, x: 50, y: 40 }, { delay: 3, x: 90, y: 50 },
       ].map((p, i) => <FloatingParticle key={i} {...p} />)}
 
-      <div className="container mx-auto px-4 py-20 lg:py-0 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 py-16 md:py-20 lg:py-0 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Left content */}
-          <div className="space-y-8">
+          <div className="space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center gap-3"
+              className="flex items-center justify-center lg:justify-start gap-3"
             >
               <motion.img
                 src="demo-poster.png"
                 alt="TASHIL MAROC ECOM"
-                className="w-14 h-14 rounded-xl object-cover mt-6 mix-blend-multiply contrast-[1.1]"
+                className="w-12 h-12 md:w-14 md:h-14 rounded-xl object-cover md:mt-6 mix-blend-multiply contrast-[1.1]"
                 whileHover={{ rotate: 10, scale: 1.1 }}
                 transition={{ type: "spring", stiffness: 300 }}
               />
-              <span className="font-heading font-bold text-lg tracking-tight mt-6">TASHIL MAROC ECOM</span>
+              <span className="font-heading font-bold text-base md:text-lg tracking-tight md:mt-6">TASHIL MAROC ECOM</span>
             </motion.div>
 
             <div className="space-y-5">
@@ -150,7 +150,7 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-lg text-muted-foreground max-w-lg leading-relaxed"
+                className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed px-2 lg:px-0"
               >
                 {t('hero.description')}
               </motion.p>
@@ -160,7 +160,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row w-full sm:w-auto gap-4 justify-center lg:justify-start"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex flex-col gap-3">
                 <Button
@@ -216,26 +216,26 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
-              className="flex items-center gap-8 pt-4"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 sm:gap-8 pt-4 w-full"
             >
               {[
                 { value: 2500, suffix: "+", label: t('hero.stat_venders'), gradient: "text-gradient" },
                 { value: 98, suffix: "%", label: t('hero.stat_satisfaction'), gradient: "text-gradient-gold" },
               ].map((stat, i) => (
-                <div key={stat.label} className="flex items-center gap-8">
-                  {i > 0 && <div className="w-px h-10 bg-border" />}
-                  <div>
-                    <p className={`text-2xl font-heading font-bold ${stat.gradient}`}>
+                <div key={stat.label} className="flex items-center gap-6 sm:gap-8">
+                  {i > 0 && <div className="hidden sm:block w-px h-10 bg-border" />}
+                  <div className="text-center sm:text-left">
+                    <p className={`text-xl sm:text-2xl font-heading font-bold ${stat.gradient}`}>
                       <CountUp end={stat.value} suffix={stat.suffix} />
                     </p>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground">{stat.label}</p>
                   </div>
                 </div>
               ))}
-              <div className="w-px h-10 bg-border" />
-              <div>
-                <p className="text-2xl font-heading font-bold text-gradient">24/7</p>
-                <p className="text-sm text-muted-foreground">{t('hero.stat_access')}</p>
+              <div className="hidden sm:block w-px h-10 bg-border" />
+              <div className="text-center sm:text-left">
+                <p className="text-xl sm:text-2xl font-heading font-bold text-gradient">24/7</p>
+                <p className="text-xs sm:text-sm text-muted-foreground">{t('hero.stat_access')}</p>
               </div>
             </motion.div>
           </div>
@@ -245,7 +245,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 60, rotateY: -15 }}
             animate={{ opacity: 1, y: 0, rotateY: 0 }}
             transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="flex justify-center lg:justify-end perspective-1000"
+            className="flex justify-center lg:justify-end perspective-1000 mt-12 lg:mt-0"
           >
             <motion.div className="relative" style={{ x: phoneX, y: phoneY }}>
               {/* Enhanced Glow Effects */}
@@ -258,7 +258,7 @@ const HeroSection = () => {
               <motion.img
                 src={phoneMockup}
                 alt="TASHIL MAROC ECOM Dashboard"
-                className="relative w-80 lg:w-[420px] rounded-3xl drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] z-10 mix-blend-multiply contrast-[1.1]"
+                className="relative w-[280px] sm:w-80 lg:w-[420px] rounded-3xl drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] z-10 mix-blend-multiply contrast-[1.1]"
                 animate={{ y: [-10, 10, -10], rotate: [-1.5, 1.5, -1.5] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
               />
