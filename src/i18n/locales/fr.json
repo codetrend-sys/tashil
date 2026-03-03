@@ -7,7 +7,7 @@
         "description": "Calculez automatiquement vos profits, suivez vos retours, analysez vos pertes et prenez des décisions éclairées — le tout depuis votre smartphone.",
         "cta_button": "Télécharger & Activer",
         "activation_code": "Code d'activation :",
-        "price": "300 DH",
+        "price": "199 DH",
         "demo_button": "Voir la démo",
         "stat_venders": "Vendeurs actifs",
         "stat_satisfaction": "Satisfaction",
@@ -42,6 +42,7 @@
         "item3": "Zéro frais mensuels",
         "item4": "Support prioritaire 24/7",
         "price_label": "Prix Unique",
+        "price_symbol": "DH",
         "footer": "Pas d'abonnement. Payez une seule fois, utilisez pour toujours."
     },
     "demo": {

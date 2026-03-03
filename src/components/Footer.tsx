@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <img src={logo} alt="TASHIL MAROC ECOM" className="w-10 h-10 rounded-lg object-cover" />
+            <img src="demo-poster.png" alt="TASHIL MAROC ECOM" className="w-10 h-10 rounded-lg object-cover" />
             <span className="font-heading font-bold text-sm tracking-tight">TASHIL MAROC ECOM</span>
           </div>
           <div className="flex flex-col items-center md:items-end gap-1">

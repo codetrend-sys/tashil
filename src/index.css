@@ -91,7 +91,12 @@
     @apply bg-background text-foreground font-body antialiased;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-heading;
   }
 }
@@ -174,4 +179,8 @@
     background: hsl(187 78% 42% / 0.4);
     pointer-events: none;
   }
+}
+
+html {
+  font-size: 18px !important;
 }

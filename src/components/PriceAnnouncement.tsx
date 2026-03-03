@@ -78,8 +78,8 @@ const PriceAnnouncement = () => {
                                 </p>
 
                                 <div className="flex items-baseline gap-1 relative z-10">
-                                    <span className="text-5xl md:text-7xl font-heading font-black text-gradient">300</span>
-                                    <span className="text-2xl font-bold text-primary">DH</span>
+                                    <span className="text-5xl md:text-7xl font-heading font-black text-gradient">199</span>
+                                    <span className="text-2xl font-bold text-primary">{t('pricing.price_symbol')}</span>
                                 </div>
 
                                 <p className="text-xs text-muted-foreground mt-4 text-center font-medium opacity-70 relative z-10">
