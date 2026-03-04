@@ -50,23 +50,11 @@ const FloatingParticle = ({ delay, x, y }: { delay: number; x: number; y: number
 const HeroSection = () => {
   const { t } = useTranslation();
   const apkUrl = "https://tashil.rakopssolutions.com/TASHIL-MAROC-ECOM.apk";
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
-  const phoneX = useTransform(smoothX, [0, 1], [-8, 8]);
-  const phoneY = useTransform(smoothY, [0, 1], [-8, 8]);
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    mouseX.set((e.clientX - rect.left) / rect.width);
-    mouseY.set((e.clientY - rect.top) / rect.height);
-  };
 
   return (
     <section
       className="relative min-h-screen flex items-center overflow-hidden gradient-hero"
-      onMouseMove={handleMouseMove}
     >
       {/* Animated blobs */}
       <motion.div
@@ -140,34 +128,21 @@ const HeroSection = () => {
               </motion.p>
             </div>
 
-            {/* Video Player Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-              className="flex justify-center w-full max-w-4xl my-8 px-4"
-            >
-              <div className="relative w-full group">
-                {/* Modern Glow Effects */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
-
-                <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-black/5 backdrop-blur-sm shadow-2xl">
-                  <motion.video
-                    autoPlay
-                    muted
-                    loop
-                    controls
-                    playsInline
-                    className="w-full h-auto aspect-video"
-                  >
-                    <source src="/demo-tashil.mp4" type="video/mp4" />
-                  </motion.video>
-
-                  {/* Subtle glass overlay */}
-                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent z-10" />
-                </div>
+            {/* Video Player Section Styled as Phone Mockup - Fixed Stable Version */}
+            <div className="relative w-80 lg:w-[420px] my-8 z-10 mx-auto">
+              <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/5 backdrop-blur-sm drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] contrast-[1.1] mix-blend-multiply">
+                <motion.video
+                  autoPlay
+                  muted
+                  loop
+                  controls
+                  playsInline
+                  className="w-full h-full block object-contain"
+                >
+                  <source src="/demo-tashil.mp4" type="video/mp4" />
+                </motion.video>
               </div>
-            </motion.div>
+            </div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
