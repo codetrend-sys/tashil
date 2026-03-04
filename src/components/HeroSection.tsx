@@ -92,7 +92,7 @@ const HeroSection = () => {
         { delay: 1.5, x: 50, y: 40 }, { delay: 3, x: 90, y: 50 },
       ].map((p, i) => <FloatingParticle key={i} {...p} />)}
 
-      <div className="container mx-auto px-4 py-16 md:py-20 lg:py-0 relative z-10">
+      <div className="container mx-auto px-4 py-10 md:py-20 lg:py-0 relative z-10">
         <div className="flex flex-col items-center justify-center max-w-4xl mx-auto text-center">
           {/* Main content */}
           <div className="space-y-6 lg:space-y-8 flex flex-col items-center w-full">
@@ -113,26 +113,11 @@ const HeroSection = () => {
             </motion.div>
 
             <div className="space-y-5">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.3, duration: 0.6 }}
-                className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary"
-              >
-                <motion.span
-                  className="w-2 h-2 rounded-full gradient-primary"
-                  animate={{ scale: [1, 1.4, 1] }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <Sparkles className="h-3.5 w-3.5" />
-                {t('hero.badge')}
-              </motion.div>
-
               <motion.h1
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.7 }}
-                className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight"
+                className="mt-2 text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight"
               >
                 {t('hero.title_part1')}{" "}
                 <motion.span
