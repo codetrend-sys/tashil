@@ -147,7 +147,7 @@ const HeroSection = () => {
               transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
               className="flex justify-center perspective-1000 my-6 w-full max-w-[320px]"
             >
-              <motion.div className="relative w-full" style={{ x: phoneX, y: phoneY }}>
+              <motion.div className="relative w-full">
                 {/* Glow Effects */}
                 <div className="absolute -inset-20 bg-primary/20 rounded-full blur-[100px] opacity-40 animate-pulse" />
                 <div className="absolute -inset-10 bg-secondary/10 rounded-full blur-[60px] opacity-30 animate-pulse-glow" />
@@ -161,8 +161,6 @@ const HeroSection = () => {
                   controls
                   playsInline
                   className="relative w-full rounded-[2rem] drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] z-10 shadow-2xl border-[6px] lg:border-[8px] border-black"
-                  animate={{ y: [-10, 10, -10], rotate: [-1.5, 1.5, -1.5] }}
-                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 >
                   <source src="/demo-tashil.mp4" type="video/mp4" />
                 </motion.video>
