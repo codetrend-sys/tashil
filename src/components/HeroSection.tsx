@@ -2,7 +2,6 @@ import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowDown, Download, Sparkles, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
-import phoneMockup from "@/assets/phone-mockup.png";
 import { useTranslation } from "react-i18next";
 
 const CountUp = ({ end, suffix = "", duration = 2 }: { end: number; suffix?: string; duration?: number }) => {
@@ -94,14 +93,14 @@ const HeroSection = () => {
       ].map((p, i) => <FloatingParticle key={i} {...p} />)}
 
       <div className="container mx-auto px-4 py-16 md:py-20 lg:py-0 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left content */}
-          <div className="space-y-6 lg:space-y-8 flex flex-col items-center lg:items-start text-center lg:text-left">
+        <div className="flex flex-col items-center justify-center max-w-4xl mx-auto text-center">
+          {/* Main content */}
+          <div className="space-y-6 lg:space-y-8 flex flex-col items-center w-full">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="flex items-center justify-center lg:justify-start gap-3"
+              className="flex items-center justify-center gap-3"
             >
               <motion.img
                 src="demo-poster.png"
@@ -150,17 +149,48 @@ const HeroSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.6, duration: 0.6 }}
-                className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed px-2 lg:px-0"
+                className="text-base md:text-lg text-muted-foreground max-w-lg leading-relaxed px-2 lg:px-0 mx-auto"
               >
                 {t('hero.description')}
               </motion.p>
             </div>
 
+            {/* Movie mockup placed here before buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+              className="flex justify-center perspective-1000 my-6 w-full max-w-[320px]"
+            >
+              <motion.div className="relative w-full" style={{ x: phoneX, y: phoneY }}>
+                {/* Glow Effects */}
+                <div className="absolute -inset-20 bg-primary/20 rounded-full blur-[100px] opacity-40 animate-pulse" />
+                <div className="absolute -inset-10 bg-secondary/10 rounded-full blur-[60px] opacity-30 animate-pulse-glow" />
+
+                <div className="absolute inset-x-[-15%] inset-y-[-5%] border border-white/5 rounded-[3rem] rotate-12 pointer-events-none" />
+
+                <motion.video
+                  autoPlay
+                  muted
+                  loop
+                  controls
+                  playsInline
+                  className="relative w-full rounded-[2rem] drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] z-10 shadow-2xl border-[6px] lg:border-[8px] border-black"
+                  animate={{ y: [-10, 10, -10], rotate: [-1.5, 1.5, -1.5] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <source src="/demo-tashil.mp4" type="video/mp4" />
+                </motion.video>
+
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-[3rem] pointer-events-none z-20 mix-blend-overlay" />
+              </motion.div>
+            </motion.div>
+
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6 }}
-              className="flex flex-col sm:flex-row w-full sm:w-auto gap-4 justify-center lg:justify-start"
+              className="flex flex-col sm:flex-row w-full sm:w-auto gap-4 justify-center"
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex flex-col gap-3">
                 <Button
@@ -199,24 +229,13 @@ const HeroSection = () => {
                   </p>
                 </motion.div>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-base px-8 py-6 rounded-xl border-border hover:bg-muted hover:text-black hover:border-primary/30 transition-all duration-300 w-full"
-                  onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
-                >
-                  {t('hero.demo_button')}
-                  <ArrowDown className="ml-2 h-4 w-4" />
-                </Button>
-              </motion.div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1, duration: 0.6 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-6 sm:gap-8 pt-4 w-full"
+              className="flex flex-wrap items-center justify-center gap-6 sm:gap-8 pt-4 w-full"
             >
               {[
                 { value: 2500, suffix: "+", label: t('hero.stat_venders'), gradient: "text-gradient" },
@@ -239,34 +258,6 @@ const HeroSection = () => {
               </div>
             </motion.div>
           </div>
-
-          {/* Right - Phone mockup with parallax */}
-          <motion.div
-            initial={{ opacity: 0, y: 60, rotateY: -15 }}
-            animate={{ opacity: 1, y: 0, rotateY: 0 }}
-            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-            className="flex justify-center lg:justify-end perspective-1000 mt-12 lg:mt-0"
-          >
-            <motion.div className="relative" style={{ x: phoneX, y: phoneY }}>
-              {/* Enhanced Glow Effects */}
-              <div className="absolute -inset-20 bg-primary/20 rounded-full blur-[100px] opacity-40 animate-pulse" />
-              <div className="absolute -inset-10 bg-secondary/10 rounded-full blur-[60px] opacity-30 animate-pulse-glow" />
-
-              {/* Floating orbit ring */}
-              <div className="absolute inset-x-[-15%] inset-y-[-5%] border border-white/5 rounded-[3rem] rotate-12 pointer-events-none" />
-
-              <motion.img
-                src={phoneMockup}
-                alt="TASHIL MAROC ECOM Dashboard"
-                className="relative w-[280px] sm:w-80 lg:w-[420px] rounded-3xl drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] z-10 mix-blend-multiply contrast-[1.1]"
-                animate={{ y: [-10, 10, -10], rotate: [-1.5, 1.5, -1.5] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              />
-
-              {/* Reflection effect overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-[3rem] pointer-events-none z-20 mix-blend-overlay" />
-            </motion.div>
-          </motion.div>
         </div>
       </div>
     </section>
