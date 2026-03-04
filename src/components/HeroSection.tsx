@@ -140,33 +140,33 @@ const HeroSection = () => {
               </motion.p>
             </div>
 
-            {/* Movie mockup placed here before buttons */}
+            {/* Video Player Section */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-              className="flex justify-center perspective-1000 my-6 w-full max-w-[320px]"
+              className="flex justify-center w-full max-w-4xl my-8 px-4"
             >
-              <motion.div className="relative w-full">
-                {/* Glow Effects */}
-                <div className="absolute -inset-20 bg-primary/20 rounded-full blur-[100px] opacity-40 animate-pulse" />
-                <div className="absolute -inset-10 bg-secondary/10 rounded-full blur-[60px] opacity-30 animate-pulse-glow" />
+              <div className="relative w-full group">
+                {/* Modern Glow Effects */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-[2.5rem] blur-2xl opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
 
-                <div className="absolute inset-x-[-15%] inset-y-[-5%] border border-white/5 rounded-[3rem] rotate-12 pointer-events-none" />
+                <div className="relative overflow-hidden rounded-2xl md:rounded-3xl border border-white/10 bg-black/5 backdrop-blur-sm shadow-2xl">
+                  <motion.video
+                    autoPlay
+                    muted
+                    loop
+                    controls
+                    playsInline
+                    className="w-full h-auto aspect-video"
+                  >
+                    <source src="/demo-tashil.mp4" type="video/mp4" />
+                  </motion.video>
 
-                <motion.video
-                  autoPlay
-                  muted
-                  loop
-                  controls
-                  playsInline
-                  className="relative w-full rounded-[2rem] drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] z-10 shadow-2xl border-[6px] lg:border-[8px] border-black"
-                >
-                  <source src="/demo-tashil.mp4" type="video/mp4" />
-                </motion.video>
-
-                <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-[3rem] pointer-events-none z-20 mix-blend-overlay" />
-              </motion.div>
+                  {/* Subtle glass overlay */}
+                  <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-black/20 to-transparent z-10" />
+                </div>
+              </div>
             </motion.div>
 
             <motion.div
