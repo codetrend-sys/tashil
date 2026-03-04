@@ -5,10 +5,10 @@ import { useTranslation } from "react-i18next";
 
 const DemoSection = () => {
   const { t } = useTranslation();
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
 
   return (
-    <section className="py-28 relative overflow-hidden" id="demo">
+    <section className="py-10 relative overflow-hidden" id="demo">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-muted/30" />
       <motion.div
@@ -107,6 +107,7 @@ const DemoSection = () => {
                   <video
                     className="w-full h-full object-contain object-center"
                     autoPlay
+                    muted
                     controls
                     playsInline
                   >

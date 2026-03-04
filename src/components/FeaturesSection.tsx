@@ -37,7 +37,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section className="py-28 bg-background relative overflow-hidden">
+    <section className=" bg-background relative overflow-hidden">
       <div className="absolute inset-0 gradient-hero opacity-50" />
 
       {/* Decorative grid pattern */}

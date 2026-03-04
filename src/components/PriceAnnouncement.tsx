@@ -6,7 +6,7 @@ const PriceAnnouncement = () => {
     const { t } = useTranslation();
 
     return (
-        <section className="py-20 relative overflow-hidden bg-background">
+        <section className="py-10 relative overflow-hidden bg-background">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
