@@ -129,7 +129,7 @@ const HeroSection = () => {
             </div>
 
             {/* Video Player Section Styled as Phone Mockup - Fixed Stable Version */}
-            <div className="relative w-80 lg:w-[420px] my-8 z-10 mx-auto">
+            <div className="relative w-full max-w-[320px] lg:max-w-[420px] my-8 z-10 mx-auto">
               <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-black/5 backdrop-blur-sm drop-shadow-[0_35px_60px_-15px_rgba(0,0,0,0.6)] contrast-[1.1] mix-blend-multiply">
                 <motion.video
                   autoPlay
